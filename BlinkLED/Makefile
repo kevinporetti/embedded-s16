@@ -8,11 +8,11 @@
 # user configuration:
 #######################################
 # TARGET: name of the output file
-TARGET = main
+TARGET = main_bruteforce 
 # MCU: part number to build for
 MCU = TM4C123GH6PM
 # SOURCES: list of input source sources
-SOURCES = main.c startup_gcc.c
+SOURCES = main_bruteforce.c startup_gcc.c
 # INCLUDES: list of includes, by default, use Includes directory
 INCLUDES = -IInclude
 # OUTDIR: directory to use for output
@@ -25,7 +25,7 @@ LD_SCRIPT = $(MCU).ld
 
 # define flags
 CFLAGS = -g -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=softfp
-CFLAGS +=-Os -ffunction-sections -fdata-sections -MD -std=c99 -Wall
+CFLAGS +=-O0 -ffunction-sections -fdata-sections -MD -std=c99 -Wall
 CFLAGS += -pedantic -DPART_$(MCU) -c -I$(TIVAWARE_PATH)
 CFLAGS += -DTARGET_IS_BLIZZARD_RA1
 LDFLAGS = -T $(LD_SCRIPT) --entry ResetISR --gc-sections
@@ -56,7 +56,7 @@ $(OUTDIR)/%.o: src/%.c | $(OUTDIR)
 $(OUTDIR)/a.out: $(OBJECTS)
 	$(LD) -o $@ $^ $(LDFLAGS)
 
-$(OUTDIR)/main.bin: $(OUTDIR)/a.out
+$(OUTDIR)/$(TARGET).bin: $(OUTDIR)/a.out
 	$(OBJCOPY) -O binary $< $@
 
 # create the output directory

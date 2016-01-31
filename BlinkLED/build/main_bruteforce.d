@@ -1,4 +1,4 @@
-build/main.o: src/main.c \
+build/main_bruteforce.o: src/main_bruteforce.c \
  /home/poret/EmbeddedS16/gcc-arm-none-eabi-5_2-2015q4/lib/gcc/arm-none-eabi/5.2.1/include/stdbool.h \
  /home/poret/EmbeddedS16/gcc-arm-none-eabi-5_2-2015q4/lib/gcc/arm-none-eabi/5.2.1/include/stdint.h \
  /home/poret/EmbeddedS16/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/stdint.h \
