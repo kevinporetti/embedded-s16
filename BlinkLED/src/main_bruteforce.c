@@ -25,7 +25,7 @@ int main()
 	int i = 0;
 	while(1)
    	{ 
-		ROM_GPIOPinWrite(GPIO_PORTF_BASE, LED_RED|LED_GREEN|LED_BLUE, LED_RED|LED_GREEN|LED_BLUE);
+		ROM_GPIOPinWrite(GPIO_PORTF_BASE, LED_RED|LED_GREEN|LED_BLUE, LED_RED);
 		for(i = 0; i < DELAY; i++);
 		ROM_GPIOPinWrite(GPIO_PORTF_BASE, LED_RED|LED_GREEN|LED_BLUE, 0);
 		for(i = 0; i < DELAY; i++);		

@@ -8,11 +8,11 @@
 # user configuration:
 #######################################
 # TARGET: name of the output file
-TARGET = main_bruteforce 
+TARGET = main
 # MCU: part number to build for
 MCU = TM4C123GH6PM
 # SOURCES: list of input source sources
-SOURCES = main_bruteforce.c startup_gcc.c
+SOURCES = main_timer_interrupt.c startup_gcc.c
 # INCLUDES: list of includes, by default, use Includes directory
 INCLUDES = -IInclude
 # OUTDIR: directory to use for output
@@ -56,7 +56,7 @@ $(OUTDIR)/%.o: src/%.c | $(OUTDIR)
 $(OUTDIR)/a.out: $(OBJECTS)
 	$(LD) -o $@ $^ $(LDFLAGS)
 
-$(OUTDIR)/$(TARGET).bin: $(OUTDIR)/a.out
+$(OUTDIR)/main.bin: $(OUTDIR)/a.out
 	$(OBJCOPY) -O binary $< $@
 
 # create the output directory
