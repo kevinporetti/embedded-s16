@@ -15,6 +15,5 @@ build/main_timer_interrupt.o: src/main_timer_interrupt.c \
  /home/poret/EmbeddedS16/tivaware/driverlib/rom.h \
  /home/poret/EmbeddedS16/tivaware/driverlib/sysctl.h \
  /home/poret/EmbeddedS16/tivaware/driverlib/pin_map.h \
- /home/poret/EmbeddedS16/tivaware/driverlib/can.h \
  /home/poret/EmbeddedS16/tivaware/driverlib/timer.h \
  /home/poret/EmbeddedS16/tivaware/driverlib/interrupt.h
