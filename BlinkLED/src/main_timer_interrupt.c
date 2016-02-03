@@ -43,6 +43,7 @@ int main()
 
     ROM_IntEnable(INT_TIMER0A);
 	ROM_TimerIntEnable(TIMER0_BASE, TIMER_TIMA_TIMEOUT);
+	TimerIntRegister(TIMER0_BASE, TIMER_A, Timer0AIntHandler);
 
 	ROM_GPIOPinWrite(GPIO_PORTF_BASE, LED_BLUE, led_value);
 

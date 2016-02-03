@@ -20,14 +20,14 @@
 int main()
 {
    	ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
-   	ROM_GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, LED_RED|LED_BLUE|LED_GREEN);
+   	ROM_GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, LED_RED);
 
 	int i = 0;
 	while(1)
    	{ 
-		ROM_GPIOPinWrite(GPIO_PORTF_BASE, LED_RED|LED_GREEN|LED_BLUE, LED_RED);
+		ROM_GPIOPinWrite(GPIO_PORTF_BASE, LED_RED, LED_RED);
 		for(i = 0; i < DELAY; i++);
-		ROM_GPIOPinWrite(GPIO_PORTF_BASE, LED_RED|LED_GREEN|LED_BLUE, 0);
+		ROM_GPIOPinWrite(GPIO_PORTF_BASE, LED_RED, 0);
 		for(i = 0; i < DELAY; i++);		
 	}
 }
