@@ -17,7 +17,7 @@
 #define LED_BLUE GPIO_PIN_2
 #define LED_GREEN GPIO_PIN_3
 
-#define MAX 500
+#define MAX 5000
 
 /**
  * Fade an RGB LED using various methods
@@ -26,7 +26,7 @@ int
 main(void)
 {
 	// Set the clock
-	SysCtlClockSet(SYSCTL_SYSDIV_1 | SYSCTL_USE_OSC | SYSCTL_OSC_MAIN | SYSCTL_XTAL_16MHZ);
+	SysCtlClockSet(SYSCTL_SYSDIV_64 | SYSCTL_USE_OSC | SYSCTL_OSC_MAIN | SYSCTL_XTAL_16MHZ);
 
 	// Set the PWM Clock
 	SysCtlPWMClockSet(SYSCTL_PWMDIV_1);
@@ -58,12 +58,9 @@ main(void)
 
     PWMOutputState(PWM1_BASE, PWM_OUT_5_BIT | PWM_OUT_6_BIT | PWM_OUT_7_BIT, true);
 
-    //
-    // We are finished.  Hang around doing nothing.
-    //
-    uint32_t red = MAX;
-    uint32_t green = MAX;
-    uint32_t blue = MAX;
+    uint32_t red = 0;
+    uint32_t green = 0;
+    uint32_t blue = 0;
 
     PWMPulseWidthSet(PWM1_BASE, PWM_OUT_5, red);
     PWMPulseWidthSet(PWM1_BASE, PWM_OUT_6, green);
@@ -71,23 +68,30 @@ main(void)
 
     while(1)
     {
-    	for(blue = MAX; blue > 0; blue--)
+    	// off to red
+    	for(red = 0; red < MAX; red++)
     	{
-    		PWMPulseWidthSet(PWM1_BASE, PWM_OUT_7, blue);
+            PWMPulseWidthSet(PWM1_BASE, PWM_OUT_5, red);
     	}
-
-    	SysCtlDelay(200);
-
-    	for(green = MAX; green > 0; green--)
+    	// red to yellow
+    	for(green = 0; green < MAX; green++)
     	{
     		PWMPulseWidthSet(PWM1_BASE, PWM_OUT_6, green);
     	}
-
-    	SysCtlDelay(200);
-
+    	// yellow to white
+    	for(blue = 0; blue < MAX; blue++)
+    	{
+            PWMPulseWidthSet(PWM1_BASE, PWM_OUT_7, blue);
+    	}
+    	// white to teal
     	for(red = MAX; red > 0; red--)
     	{
     		PWMPulseWidthSet(PWM1_BASE, PWM_OUT_5, red);
+    	}
+    	// teal to blue
+    	for(green = MAX; green > 0; green--)
+    	{
+    		PWMPulseWidthSet(PWM1_BASE, PWM_OUT_5, green);
     	}
     }
 }
