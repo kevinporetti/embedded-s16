@@ -96,6 +96,7 @@ main(void)
     //
     ROM_IntEnable(INT_UART0);
     ROM_UARTIntEnable(UART0_BASE, UART_INT_RX | UART_INT_RT);
+    UARTIntRegister(UART0_BASE, UARTIntHandler);
 
     //
     // Loop forever.
